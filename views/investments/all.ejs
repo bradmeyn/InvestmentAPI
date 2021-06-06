@@ -6,7 +6,14 @@
     <title>investments</title>
 </head>
 <body>
-    <h1></h1>
+    <h1>All investments</h1>
+    <ul>
+
     
+    <% investments.forEach(investment => { %>
+        <li> <%= investment.name %> </li>
+
+   <% }); %>
+</ul>
 </body>
 </html>
