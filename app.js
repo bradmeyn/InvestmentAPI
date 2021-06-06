@@ -8,6 +8,11 @@ app.get('/', (req, res) => {
 });
 
 
+//display all investments
+app.get('/investments', async (req, res) => {
+    res.send("all investments")
+});
+
 
 
 
