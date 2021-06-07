@@ -3,7 +3,7 @@ module.exports = [
     name: "Vanguard Australian Shares Index ETF",
     code: "VAS",
     provider: "Vanguard",
-    cost: 0.0010,
+    cost: "0.0010",
     assetAllocation: {
         growthAssets: {
             australianEquities: 1,

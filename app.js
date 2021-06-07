@@ -33,9 +33,20 @@ app.get('/', (req, res) => {
 
 //display all investments
 app.get('/investments', async (req, res) => {
+    //search investment db for all investments
     const investments = await Investment.find();
-    res.render("investments/all", {investments})
+    //render index ejs file and pass investments array through
+    res.render("investments/index", {investments})
 });
+
+app.get('/investments/:code', async (req, res) => {
+    const {code} = req.params;
+        const investment = await Investment.findOne({code: code});
+        
+        res.render('investments/show', {investment});
+    });
+
+ 
 
 
 app.listen(3000, ()=> {

@@ -11,7 +11,7 @@
 
     
     <% investments.forEach(investment => { %>
-        <li> <%= investment.name %> </li>
+        <div > <a href="/investments/<%= investment.code%>"> <%= investment.name %> </a></div>
 
    <% }); %>
 </ul>

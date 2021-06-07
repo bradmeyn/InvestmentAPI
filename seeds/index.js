@@ -14,19 +14,19 @@ mongoose.connect('mongodb://localhost:27017/investmentAPI', {
 
 //confirm database connection
 const db = mongoose.connection;
-db.on('error',console.error.bind('connection error:'));
+db.on('error',console.error.bind('connection erdb.ror:'));
 db.once('open', () => {
     console.log("database connected");
 });
 
 //delete existing database data and refill with generic options
-const fillDB = () => {
-   Investment.deleteMany({});
+const fillDB = async () => {
+   await Investment.deleteMany({});
     investments.forEach((etf) => {
         const investment = new Investment({
             name: etf.name,
-            code: etf.code
-            
+            code: etf.code,
+            cost: etf.cost
         });
        investment.save();
     });
