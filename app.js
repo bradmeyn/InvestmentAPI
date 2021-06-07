@@ -1,8 +1,13 @@
 const express = require('express');
+const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 
 const Investment = require('./models/investment');
+
+
+
 
 
 //connect mongoose to mongodb server
@@ -19,12 +24,14 @@ db.once('open', () => {
     console.log("database connected");
 });
 
-const app = express();
+
 
 //set the view ehgine to use ejs
 app.set('view engine', 'ejs');
 //views directory location
 app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', ejsMate);
+
 
 app.get('/', (req, res) => {
     res.send("hey")

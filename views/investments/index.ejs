@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>investments</title>
-</head>
-<body>
-    <h1>All investments</h1>
-    <ul>
+
+<% layout('layouts/boilerplate') -%>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Cost (% pa)</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <% investments.forEach(investment => { %>
+            <tr>
+                <td><a href="/investments/<%= investment.code%>"><%= investment.code%></a></td>
+                <td><%= investment.name %></td>
+                <td><%= investment.cost%></td>
+            </tr>
+    
+       <% }); %>
+      
+    </tbody>
+  </table>
+
+
+<ul>
 
     
-    <% investments.forEach(investment => { %>
-        <div > <a href="/investments/<%= investment.code%>"> <%= investment.name %> </a></div>
-
-   <% }); %>
+    
 </ul>
-</body>
-</html>
+
+
