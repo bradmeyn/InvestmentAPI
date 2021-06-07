@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-
+let numeral = require('numeral');
 const Investment = require('./models/investment');
 
 
@@ -43,7 +43,7 @@ app.get('/investments', async (req, res) => {
     //search investment db for all investments
     const investments = await Investment.find();
     //render index ejs file and pass investments array through
-    res.render("investments/index", {investments})
+    res.render("investments/index", {investments, numeral})
 });
 
 app.get('/investments/:code', async (req, res) => {
