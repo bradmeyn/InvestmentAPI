@@ -24,8 +24,8 @@ db.once('open', () => {
     console.log("database connected");
 });
 
-
-
+//add ability to parse body
+app.use(express.urlencoded({extended:true}));
 //set the view ehgine to use ejs
 app.set('view engine', 'ejs');
 //views directory location
@@ -46,6 +46,21 @@ app.get('/investments', async (req, res) => {
     res.render("investments/index", {investments, numeral})
 });
 
+app.get('/investments/add', (req, res) =>{
+
+    res.render('investments/add')
+});
+
+
+app.post('/investments', async (req, res)=> {
+    const investment = new Investment(req.body.investment)
+
+    await investment.save();
+    // const investment = new Investment(req)
+    res.redirect(`/investments/${investment.code}`)
+})
+
+//display single investment
 app.get('/investments/:code', async (req, res) => {
     const {code} = req.params;
         const investment = await Investment.findOne({code: code});
@@ -53,7 +68,7 @@ app.get('/investments/:code', async (req, res) => {
         res.render('investments/show', {investment});
     });
 
- 
+
 
 
 app.listen(3000, ()=> {

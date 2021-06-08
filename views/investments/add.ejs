@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') -%>
+
+
+<div class="row">
+    
+    <div class="col-4 offset-3">
+        <h1 >New Investment</h1>
+        <p>Add new Investmnet Details</p>
+       
+<form action="/investments" method="POST" >
+
+    <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" type="text" id="name" name="investment[name]" required>
+        <div class="valid-feedback">Looks Good</div>
+    </div>
+
+   <div class="">
+        <div class="mb-3">
+            <label class="form-label" for="location">Code</label>
+            <input class="form-control" type="text" id="location" name="investment[code]" required>
+            <div class="valid-feedback">Looks Good</div>
+        </div>
+  
+        <div class="mb-3">
+            <label class="form-label" for="Cost">Cost</label>
+            <div class="input-group ">
+                <input type="text" class="form-control" placeholder="0.00" aria-label="cost" aria-describedby="cost-label" name="investment[cost]" required>
+                <span class="input-group-text" id="cost-label">%</span>
+                <div class="valid-feedback">Looks Good</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" type="text" id="description" name="campground[description]" required></textarea>
+        <div class="valid-feedback">Looks Good</div>
+    </div> -->
+    <div class="mb-3">
+        <button class="btn btn-primary btn-lg" type="submit">Add Investment</button>
+    </div>
+    
+</form>
+    </div>
+</div>

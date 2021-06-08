@@ -4,6 +4,7 @@
   "description": "API for investment data",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,6 +14,7 @@
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7",
     "numeral": "^2.0.6"
   }
 }
