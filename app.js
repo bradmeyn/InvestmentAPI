@@ -1,13 +1,16 @@
 const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
+
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-let numeral = require('numeral');
+const numeral = require('numeral');
 const Investment = require('./models/investment');
 
 
-
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 
 
 //connect mongoose to mongodb server
@@ -46,12 +49,12 @@ app.get('/investments', async (req, res) => {
     res.render("investments/index", {investments, numeral})
 });
 
+//serve add new investment page
 app.get('/investments/add', (req, res) =>{
-
     res.render('investments/add')
 });
 
-
+//post route for new investment
 app.post('/investments', async (req, res)=> {
     const investment = new Investment(req.body.investment)
 
@@ -68,7 +71,18 @@ app.get('/investments/:code', async (req, res) => {
         res.render('investments/show', {investment});
     });
 
+app.delete('/investments/:code', (req, res)=>{
+    console.log(req.params.code);
+    res.send('delete');
+});
 
+app.get('/investments/:code/edit', (req, res)=>{
+    res.send("edit")
+});
+
+app.put('/investments/:code', (req, res)=>{
+    res.send('edit')
+});
 
 
 app.listen(3000, ()=> {
