@@ -6,7 +6,7 @@
       <h2 class="card-title"><%= investment.name %></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%= investment.code %></h6>
       <div class="pt-6">
-        <button class="btn btn-primary">Edit</button>
+        <a href="/investments/<%=investment.code%>/update"><button class="btn btn-primary">Edit</button></a>
         <form action="/investments/<%=investment.code%>?_method=DELETE" method="POST">
           <button class="btn btn-danger">Delete</button>
         </form>

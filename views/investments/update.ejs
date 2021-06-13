@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') -%>
+
+
+<div class="row">
+    
+    <div class="col-8 offset-2">
+        <h2>Update <%= investment.name %></h2>
+        <p>Add new Investmnet Details</p>
+       
+        <form action="/investments/<%=investment.code%>?_method=PUT" method="POST" class="my-5">
+
+            <div class="mb-3 col-6">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="investment[name]" required value="<%=investment.name%>">
+                <div class="valid-feedback">Looks Good</div>
+            </div>
+
+
+                <div class="mb-3 col-6">
+                    <label class="form-label" for="location">Code</label>
+                    <input class="form-control" type="text" id="location" name="investment[code]" required value="<%=investment.code%>">
+                    <div class="valid-feedback">Looks Good</div>
+                </div>
+        
+                <div class="mb-3 col-6">
+                    <label class="form-label" for="Cost">Cost</label>
+                    <div class="input-group ">
+                        <input type="text" class="form-control"  aria-label="cost" aria-describedby="cost-label" name="investment[cost]" required value="<%= numeral(investment.cost).format('0.00%')%>">
+                        <span class="input-group-text" id="cost-label">%</span>
+                        <div class="valid-feedback">Looks Good</div>
+                    </div>
+                </div>
+           
+            <div class="pt-3">
+                <button class="btn btn-primary btn-lg" type="submit">Update Investment</button>
+            </div>
+            
+        </form>
+        <a href="/investments/<%=investment.code%>" class="link"> Back to <%= investment.name%> </a>
+    </div>
+    
+</div>
